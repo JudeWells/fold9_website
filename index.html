@@ -4,29 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fold9</title>
-<meta name="description" content="Fold9 — fold9labs.com">
-<meta name="color-scheme" content="light dark">
+<meta name="description" content="Fold9 does computational protein design.">
+<meta name="theme-color" content="#f5f4ef">
 <link rel="canonical" href="https://fold9labs.com/">
 <style>
   :root {
-    --ink: #14140f;
-    --paper: #efece3;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --ink: #efece3; --paper: #14140f; }
+    color-scheme: light;
+    --ink: #1c211e;
+    --muted: #737a74;
+    --paper: #f5f4ef;
+    --line: #dcded6;
+    --accent: #426853;
   }
   * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
+  html, body { min-height: 100%; margin: 0; }
   body {
     background: var(--paper);
     color: var(--ink);
-    display: grid;
-    place-items: center;
-    padding: 6vmin;
     font-family: system-ui, sans-serif;
   }
+  .page { width: min(100% - 64px, 1120px); margin: 0 auto; }
+  header { height: 92px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
   #mark {
-    width: min(82vw, 880px);
+    width: 142px;
     height: auto;
     display: block;
     overflow: visible;
@@ -38,13 +38,56 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
+  .wordmark { color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  main { display: grid; grid-template-columns: 1.15fr .85fr; gap: 10%; align-items: center; padding: clamp(76px, 13vh, 144px) 0 112px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 24px; }
+  h1 { max-width: 610px; margin: 0; font-size: clamp(46px, 6.4vw, 78px); line-height: 1.02; letter-spacing: -.065em; font-weight: 520; }
+  .intro { max-width: 430px; margin: 28px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
+  .contact { border-top: 1px solid var(--line); padding-top: 22px; }
+  .contact h2 { font-size: 17px; font-weight: 600; margin: 0 0 8px; letter-spacing: -.02em; }
+  .contact > p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0 0 24px; }
+  label { display: block; font-size: 12px; color: var(--muted); margin: 0 0 7px; }
+  input, textarea { width: 100%; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--ink); font: inherit; font-size: 14px; padding: 11px 12px; margin-bottom: 16px; outline: none; }
+  input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px #42685320; }
+  textarea { min-height: 104px; resize: vertical; }
+  button { display: inline-flex; align-items: center; gap: 18px; border: 0; border-radius: 3px; background: var(--ink); color: var(--paper); padding: 12px 15px; font: inherit; font-size: 13px; cursor: pointer; }
+  button:hover { background: var(--accent); }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 28px; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+  a { color: inherit; text-decoration-color: #aeb4ac; text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  @media (max-width: 700px) { .page { width: min(100% - 40px, 520px); } header { height: 76px; } #mark { width: 120px; } main { grid-template-columns: 1fr; gap: 64px; padding: 76px 0 72px; } h1 { font-size: clamp(48px, 12vw, 68px); } .intro { font-size: 16px; } footer { gap: 12px; flex-wrap: wrap; } }
 </style>
 </head>
 <body>
-
+<div class="page">
+<header>
 <svg id="mark" viewBox="0 0 460 196" role="img" aria-label="Fold9">
   <title>Fold9</title>
 </svg>
+<span class="wordmark">Protein design</span>
+</header>
+<main>
+  <section aria-labelledby="headline">
+    <p class="eyebrow">Fold9 Labs</p>
+    <h1 id="headline">Computational molecular design.</h1>
+    <p class="intro">Fold9 is a molecular design company specialising in computational approaches to frontier protein and materials design.</p>
+  </section>
+  <section class="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Start a conversation</h2>
+    <p>Tell us a little about what you have in mind, or email us at <a href="mailto:jude@fold9labs.com">jude@fold9labs.com</a>.</p>
+    <form id="contact-form">
+      <label for="name">Your name</label>
+      <input id="name" name="name" autocomplete="name" required>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="message">How can we help?</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Send a message <span aria-hidden="true">↗</span></button>
+    </form>
+  </section>
+</main>
+<footer><span>© <span id="year"></span> Fold9 Labs</span><a href="mailto:jude@fold9labs.com">jude@fold9labs.com</a></footer>
+</div>
 
 <script>
 (function () {
@@ -121,6 +164,15 @@
 
   svg.appendChild(g);
 })();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  var form = new FormData(event.currentTarget);
+  var subject = "Fold9 website enquiry from " + form.get("name");
+  var body = "Name: " + form.get("name") + "\nEmail: " + form.get("email") + "\n\n" + form.get("message");
+  window.location.href = "mailto:jude@fold9labs.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+});
 </script>
 
 </body>
