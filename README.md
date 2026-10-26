@@ -1,7 +1,11 @@
 # Fold9 holding page
 
-A single static page for `https://fold9labs.com/`, using the existing Fold9 logo
-design in `index.html`. No dependencies or build step are required.
+A minimal black holding page for `https://fold9labs.com/`, with white,
+left-aligned Geist Pixel text: Fold9, "molecule design.", and a direct email link
+to `jude@fold9labs.com`. No dependencies, JavaScript, or build step are required.
+
+Geist Pixel Square is hosted locally in `fonts/`, with its OFL license included.
+Font source: [Vercel Geist](https://github.com/vercel/geist-font).
 
 ## Preview locally
 
@@ -49,6 +53,6 @@ Reference: [GitHub Pages custom domain documentation](https://docs.github.com/en
 
 ## Other static hosting
 
-Upload `index.html` as the site's root document, connect `fold9labs.com` in the
+Upload `index.html` and the `fonts/` directory, connect `fold9labs.com` in the
 hosting provider's settings, and apply that provider's DNS records. No build
 command is needed.

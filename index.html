@@ -3,177 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fold9</title>
-<meta name="description" content="Fold9 does computational protein design.">
-<meta name="theme-color" content="#f5f4ef">
+<title>Fold9 — molecule design.</title>
+<meta name="description" content="Fold9. molecule design.">
+<meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://fold9labs.com/">
+<link rel="preload" href="fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root {
-    color-scheme: light;
-    --ink: #1c211e;
-    --muted: #737a74;
-    --paper: #f5f4ef;
-    --line: #dcded6;
-    --accent: #426853;
+  @font-face {
+    font-family: "Geist Pixel";
+    src: url("fonts/GeistPixel-Square.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
   }
+  :root { color-scheme: dark; }
   * { box-sizing: border-box; }
-  html, body { min-height: 100%; margin: 0; }
+  html { min-height: 100%; background: #000; }
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: system-ui, sans-serif;
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: "Geist Pixel", monospace;
+    font-weight: 400;
   }
-  .page { width: min(100% - 64px, 1120px); margin: 0 auto; }
-  header { height: 92px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
-  #mark {
-    width: 142px;
-    height: auto;
-    display: block;
-    overflow: visible;
+  main {
+    padding: clamp(64px, 12vh, 128px) clamp(24px, 8vw, 128px);
+    text-align: left;
   }
-  #mark path {
-    fill: none;
-    stroke: var(--ink);
-    stroke-width: 13;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  h1 {
+    margin: 0;
+    font-size: clamp(64px, 10vw, 112px);
+    font-weight: 400;
+    line-height: 1;
   }
-  .wordmark { color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-  main { display: grid; grid-template-columns: 1.15fr .85fr; gap: 10%; align-items: center; padding: clamp(76px, 13vh, 144px) 0 112px; }
-  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 24px; }
-  h1 { max-width: 610px; margin: 0; font-size: clamp(46px, 6.4vw, 78px); line-height: 1.02; letter-spacing: -.065em; font-weight: 520; }
-  .intro { max-width: 430px; margin: 28px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
-  .contact { border-top: 1px solid var(--line); padding-top: 22px; }
-  .contact h2 { font-size: 17px; font-weight: 600; margin: 0 0 8px; letter-spacing: -.02em; }
-  .contact > p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0 0 24px; }
-  label { display: block; font-size: 12px; color: var(--muted); margin: 0 0 7px; }
-  input, textarea { width: 100%; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--ink); font: inherit; font-size: 14px; padding: 11px 12px; margin-bottom: 16px; outline: none; }
-  input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px #42685320; }
-  textarea { min-height: 104px; resize: vertical; }
-  button { display: inline-flex; align-items: center; gap: 18px; border: 0; border-radius: 3px; background: var(--ink); color: var(--paper); padding: 12px 15px; font: inherit; font-size: 13px; cursor: pointer; }
-  button:hover { background: var(--accent); }
-  footer { border-top: 1px solid var(--line); padding: 20px 0 28px; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
-  a { color: inherit; text-decoration-color: #aeb4ac; text-underline-offset: 3px; }
-  a:hover { color: var(--accent); }
-  @media (max-width: 700px) { .page { width: min(100% - 40px, 520px); } header { height: 76px; } #mark { width: 120px; } main { grid-template-columns: 1fr; gap: 64px; padding: 76px 0 72px; } h1 { font-size: clamp(48px, 12vw, 68px); } .intro { font-size: 16px; } footer { gap: 12px; flex-wrap: wrap; } }
+  .tagline {
+    margin: 24px 0 0;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .contact {
+    margin: 40px 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  a { color: #fff; text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  a:focus-visible { outline: 1px solid #fff; outline-offset: 6px; }
 </style>
 </head>
 <body>
-<div class="page">
-<header>
-<svg id="mark" viewBox="0 0 460 196" role="img" aria-label="Fold9">
-  <title>Fold9</title>
-</svg>
-<span class="wordmark">Protein design</span>
-</header>
 <main>
-  <section aria-labelledby="headline">
-    <p class="eyebrow">Fold9 Labs</p>
-    <h1 id="headline">Computational molecular design.</h1>
-    <p class="intro">Fold9 is a molecular design company specialising in computational approaches to frontier protein and materials design.</p>
-  </section>
-  <section class="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title">Start a conversation</h2>
-    <p>Tell us a little about what you have in mind, or email us at <a href="mailto:jude@fold9labs.com">jude@fold9labs.com</a>.</p>
-    <form id="contact-form">
-      <label for="name">Your name</label>
-      <input id="name" name="name" autocomplete="name" required>
-      <label for="email">Email address</label>
-      <input id="email" name="email" type="email" autocomplete="email" required>
-      <label for="message">How can we help?</label>
-      <textarea id="message" name="message" required></textarea>
-      <button type="submit">Send a message <span aria-hidden="true">↗</span></button>
-    </form>
-  </section>
+  <h1>Fold9</h1>
+  <p class="tagline">molecule design.</p>
+  <p class="contact"><a href="mailto:jude@fold9labs.com">jude@fold9labs.com</a></p>
 </main>
-<footer><span>© <span id="year"></span> Fold9 Labs</span><a href="mailto:jude@fold9labs.com">jude@fold9labs.com</a></footer>
-</div>
-
-<script>
-(function () {
-  var AMP = 3.4;
-  var WAVE = 26;
-  var PI = Math.PI;
-
-  function seg(x1, y1, x2, y2, n) {
-    var p = [];
-    for (var i = 0; i <= n; i++) {
-      var t = i / n;
-      p.push([x1 + (x2 - x1) * t, y1 + (y2 - y1) * t]);
-    }
-    return p;
-  }
-
-  function arc(cx, cy, rx, ry, a0, a1, n) {
-    var p = [];
-    for (var i = 0; i <= n; i++) {
-      var a = a0 + (a1 - a0) * i / n;
-      p.push([cx + rx * Math.cos(a), cy + ry * Math.sin(a)]);
-    }
-    return p;
-  }
-
-  function wobble(pts, phase) {
-    var d = [0];
-    for (var i = 1; i < pts.length; i++) {
-      d.push(d[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
-    }
-    var out = [];
-    for (var j = 0; j < pts.length; j++) {
-      var a = pts[Math.max(0, j - 1)];
-      var b = pts[Math.min(pts.length - 1, j + 1)];
-      var tx = b[0] - a[0], ty = b[1] - a[1];
-      var len = Math.hypot(tx, ty) || 1;
-      var off = AMP * Math.sin(2 * PI * d[j] / WAVE + phase);
-      out.push([pts[j][0] - ty / len * off, pts[j][1] + tx / len * off]);
-    }
-    return out;
-  }
-
-  function toPath(p) {
-    var s = "M" + p[0][0].toFixed(2) + " " + p[0][1].toFixed(2);
-    for (var i = 1; i < p.length; i++) {
-      s += "L" + p[i][0].toFixed(2) + " " + p[i][1].toFixed(2);
-    }
-    return s;
-  }
-
-  var letters = [
-    { x: 0,   strokes: [seg(0, 0, 0, 100, 40), seg(0, 0, 46, 0, 20), seg(0, 48, 37, 48, 16)] },
-    { x: 76,  strokes: [arc(33, 50, 33, 50, 0, 2 * PI, 110)] },
-    { x: 172, strokes: [seg(0, 0, 0, 100, 40), seg(0, 100, 44, 100, 20)] },
-    { x: 246, strokes: [seg(0, 0, 0, 100, 40), arc(0, 50, 50, 50, -PI / 2, PI / 2, 60)] },
-    { x: 326, strokes: [arc(28, 30, 28, 30, 0, 2 * PI, 80), seg(56, 30, 46, 100, 32)] }
-  ];
-
-  var NS = "http://www.w3.org/2000/svg";
-  var svg = document.getElementById("mark");
-  var g = document.createElementNS(NS, "g");
-  g.setAttribute("transform", "translate(39,46)");
-
-  var phase = 0;
-  letters.forEach(function (letter) {
-    letter.strokes.forEach(function (stroke) {
-      var pts = stroke.map(function (p) { return [p[0] + letter.x, p[1]]; });
-      var el = document.createElementNS(NS, "path");
-      el.setAttribute("d", toPath(wobble(pts, phase)));
-      g.appendChild(el);
-      phase += 1.1;
-    });
-  });
-
-  svg.appendChild(g);
-})();
-
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("contact-form").addEventListener("submit", function (event) {
-  event.preventDefault();
-  var form = new FormData(event.currentTarget);
-  var subject = "Fold9 website enquiry from " + form.get("name");
-  var body = "Name: " + form.get("name") + "\nEmail: " + form.get("email") + "\n\n" + form.get("message");
-  window.location.href = "mailto:jude@fold9labs.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-});
-</script>
-
 </body>
 </html>
